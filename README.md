@@ -1,3 +1,6 @@
+> [!NOTE]
+> This is a fork of OctrayRewrite which fixes bugs preventing it from loading on Iris.
+
 Source code for Octray Rewrite.
 
 Main improvements over [regular Octray](https://github.com/BruceKnowsHow/Octray):
