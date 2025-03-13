@@ -14,6 +14,7 @@ layout (r32ui) uniform uimage2D colorimg3;
 attribute vec4 at_tangent;
 attribute vec3 mc_Entity;
 attribute vec2 mc_midTexCoord;
+attribute vec4 at_midBlock;
 
 uniform sampler2D tex;
 
@@ -73,6 +74,11 @@ void main() {
     texcoord       = gl_MultiTexCoord0.xy;
     tanMat         = GetTangentMat();
     blockID        = backport_id(int(mc_Entity.x)) % 256;
+
+    if(at_midBlock.w > 0.0){
+        blockID = blockID | 64;
+    }
+
     midTexcoord    = mc_midTexCoord;
     cornerTexcoord = mc_midTexCoord.xy - abs(mc_midTexCoord.xy - texcoord);
     vec2 texDirection = sign(texcoord - mc_midTexCoord)*vec2(1,sign(at_tangent.w));
